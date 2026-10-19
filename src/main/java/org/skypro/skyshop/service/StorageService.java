@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+
 @Service
 public class StorageService {
     private final Map<UUID, Product> productStorage;
@@ -31,6 +32,10 @@ public class StorageService {
         allItems.addAll( productStorage.values());
         allItems.addAll( articleStorage.values());
         return allItems;
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(productStorage.get(id));
     }
 
     private void addData(){
